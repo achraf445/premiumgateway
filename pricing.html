@@ -7,6 +7,7 @@
     <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
     <meta name="description" content="Tarification transparente des frais de dossier de visa à Témara : Formule Individuelle, Famille, et Tarif Mineur.">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="/_vercel/insights/script.js"></script>
     <script>
         tailwind.config = {
             theme: {
@@ -235,6 +236,10 @@
     </div>
 
     <script>
+        window.va = window.va || function () {
+            (window.vaq = window.vaq || []).push(arguments);
+        };
+        
         document.getElementById('menu-btn').addEventListener('click', () => document.getElementById('mobile-menu').classList.toggle('hidden'));
         const bookingModal = document.getElementById('booking-modal');
         function openBookingModal(category) {

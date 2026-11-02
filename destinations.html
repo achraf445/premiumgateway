@@ -7,6 +7,7 @@
     <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
     <meta name="description" content="Découvrez nos destinations phares de visa : USA (B1/B2), Canada, UK, Espagne & Schengen avec l'agence Premium Gateway à Témara.">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="/_vercel/insights/script.js"></script>
     <script>
         tailwind.config = {
             theme: {
@@ -258,6 +259,10 @@
     </div>
 
     <script>
+        window.va = window.va || function () {
+            (window.vaq = window.vaq || []).push(arguments);
+        };
+        
         document.getElementById('menu-btn').addEventListener('click', () => document.getElementById('mobile-menu').classList.toggle('hidden'));
         const bookingModal = document.getElementById('booking-modal');
         function openBookingModal(destination) {

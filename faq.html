@@ -7,6 +7,7 @@
     <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
     <meta name="description" content="Réponses aux questions courantes concernant les procédures de demande de visa à Témara et Rabat.">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="/_vercel/insights/script.js"></script>
     <script>
         tailwind.config = {
             theme: {
@@ -175,6 +176,10 @@
     </footer>
 
     <script>
+        window.va = window.va || function () {
+            (window.vaq = window.vaq || []).push(arguments);
+        };
+        
         document.getElementById('menu-btn').addEventListener('click', () => document.getElementById('mobile-menu').classList.toggle('hidden'));
     </script>
 </body>
