@@ -214,24 +214,56 @@
     </footer>
 
     <!-- Booking Modal Code Included -->
-    <div id="booking-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-navy-950/80 backdrop-blur-md hidden">
+    <div id="booking-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-navy-950/80 backdrop-blur-md hidden" role="dialog" aria-modal="true">
         <div class="glass-card border border-white/15 rounded-2xl max-w-md w-full p-6 relative shadow-2xl space-y-5">
-            <button onclick="closeBookingModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center border border-white/10 text-xs"><i class="fa-solid fa-xmark"></i></button>
-            <h3 class="text-xl font-extrabold text-white">Pré-réservation Consultation Visa</h3>
+            <button onclick="closeBookingModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center border border-white/10 text-xs" aria-label="Fermer">
+                <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+            </button>
+            <div>
+                <span class="text-gold text-[10px] font-semibold uppercase tracking-widest">Réservation Express</span>
+                <h3 class="text-xl font-extrabold text-white mt-1">Pré-réservation Consultation Visa</h3>
+            </div>
             <form id="whatsapp-form" onsubmit="submitWhatsApp(event)" class="space-y-3.5">
-                <input type="text" id="client-name" required placeholder="Votre nom & prénom" class="w-full px-3.5 py-2.5 rounded-xl bg-white/5 border border-white/10 text-white text-xs focus:outline-none focus:border-gold">
-                <select id="client-destination" class="w-full px-3 py-2.5 rounded-xl bg-navy-900 border border-white/10 text-white text-xs focus:outline-none focus:border-gold">
-                    <option value="USA">Visa USA</option>
-                    <option value="Canada">Visa Canada</option>
-                    <option value="UK">Visa UK</option>
-                    <option value="Espagne">Visa Espagne</option>
-                </select>
-                <select id="client-category" class="w-full px-3 py-2.5 rounded-xl bg-navy-900 border border-white/10 text-white text-xs focus:outline-none focus:border-gold">
-                    <option value="Standard Adult (1500 DH)">Standard (1500 DH)</option>
-                    <option value="Famille (1000 DH)">Famille (1000 DH/p)</option>
-                </select>
-                <textarea id="client-message" rows="2" placeholder="Message..." class="w-full px-3.5 py-2.5 rounded-xl bg-white/5 border border-white/10 text-white text-xs focus:outline-none focus:border-gold"></textarea>
-                <button type="submit" class="w-full py-3 bg-emerald-600 hover:bg-emerald-500 text-white font-medium rounded-xl text-xs"><i class="fa-brands fa-whatsapp text-lg mr-2"></i>Envoyer sur WhatsApp</button>
+                <div>
+                    <label class="block text-[10px] font-medium text-gray-300 uppercase tracking-wider mb-1">Nom complet</label>
+                    <input type="text" id="client-name" required placeholder="Votre nom & prénom" class="w-full px-3.5 py-2.5 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 text-xs focus:outline-none focus:border-gold">
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-[10px] font-medium text-gray-300 uppercase tracking-wider mb-1">Destination</label>
+                        <select id="client-destination" class="w-full px-3 py-2.5 rounded-xl bg-navy-900 border border-white/10 text-white text-xs focus:outline-none focus:border-gold">
+                            <option value="USA">Visa USA</option>
+                            <option value="Canada">Visa Canada</option>
+                            <option value="UK">Visa Royaume-Uni</option>
+                            <option value="Espagne">Visa Espagne</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-[10px] font-medium text-gray-300 uppercase tracking-wider mb-1">Formule</label>
+                        <select id="client-category" class="w-full px-3 py-2.5 rounded-xl bg-navy-900 border border-white/10 text-white text-xs focus:outline-none focus:border-gold">
+                            <option value="Standard Adult (1500 DH)">Standard (1500 DH)</option>
+                            <option value="Famille (1000 DH)">Famille (1000 DH/p)</option>
+                            <option value="Mineur < 18 ans (500 DH)">Mineur (500 DH)</option>
+                        </select>
+                    </div>
+                </div>
+                <!-- Added Status Field -->
+                <div>
+                    <label class="block text-[10px] font-medium text-gray-300 uppercase tracking-wider mb-1">Situation Professionnelle</label>
+                    <select id="client-status" class="w-full px-3 py-2.5 rounded-xl bg-navy-900 border border-white/10 text-white text-xs focus:outline-none focus:border-gold">
+                        <option value="Salarié">Salarié</option>
+                        <option value="Gérant de société">Gérant de société</option>
+                        <option value="Retraité">Retraité</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-[10px] font-medium text-gray-300 uppercase tracking-wider mb-1">Message (Optionnel)</label>
+                    <textarea id="client-message" rows="3" placeholder="Exemple: Date souhaitée de voyage..." class="w-full px-3.5 py-2.5 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 text-xs focus:outline-none focus:border-gold"></textarea>
+                </div>
+                <button type="submit" class="w-full py-3 bg-emerald-600 hover:bg-emerald-500 text-white font-medium rounded-xl text-xs transition-all flex items-center justify-center space-x-2">
+                    <i class="fa-brands fa-whatsapp text-lg" aria-hidden="true"></i>
+                    <span>Envoyer sur WhatsApp</span>
+                </button>
             </form>
         </div>
     </div>
@@ -243,16 +275,24 @@
         
         document.getElementById('menu-btn').addEventListener('click', () => document.getElementById('mobile-menu').classList.toggle('hidden'));
         const bookingModal = document.getElementById('booking-modal');
+        const clientDestination = document.getElementById('client-destination');
+        
         function openBookingModal(destination) {
             bookingModal.classList.remove('hidden');
             if (destination) document.getElementById('client-destination').value = destination;
         }
         function closeBookingModal() { bookingModal.classList.add('hidden'); }
-        function submitWhatsApp(e) {
-            e.preventDefault();
+
+        function submitWhatsApp(event) {
+            event.preventDefault();
             const name = document.getElementById('client-name').value;
-            const dest = document.getElementById('client-destination').value;
-            window.open(`https://wa.me/212693448027?text=Bonjour%20Premium%20Gateway,%20demande%20de%20visa%20${dest}%20pour%20${encodeURIComponent(name)}`, '_blank');
+            const dest = clientDestination.value;
+            const cat = document.getElementById('client-category').value;
+            const status = document.getElementById('client-status').value;
+            const msg = document.getElementById('client-message').value;
+
+            const text = `Bonjour Premium Gateway Témara,%0A%0AJe m'appelle *${encodeURIComponent(name)}*.%0AJe souhaite faire une demande pour : *Visa ${encodeURIComponent(dest)}*.%0AFormule choisie : *${encodeURIComponent(cat)}*.%0ASituation : *${encodeURIComponent(status)}*.%0A%0AMessage : ${encodeURIComponent(msg)}`;
+            window.open(`https://wa.me/212693448027?text=${text}`, '_blank');
             closeBookingModal();
         }
     </script>
